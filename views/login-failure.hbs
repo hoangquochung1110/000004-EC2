@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <div class="alert alert-danger" role="alert">
+      <h4 class="alert-heading">Authentication Failed</h4>
+      <p>{{message}}</p>
+      
+      {{#if error}}
+      <hr>
+      <h5>Error Details:</h5>
+      <p><strong>Error:</strong> {{error}}</p>
+      {{#if error_description}}
+      <p><strong>Description:</strong> {{error_description}}</p>
+      {{/if}}
+      {{/if}}
+      
+      <hr>
+      <p class="mb-0">Please <a href="/auth/login" class="alert-link">try again</a> or contact support for assistance.</p>
+    </div>
+    
+    <div class="card mt-4">
+      <div class="card-header bg-info text-white">
+        <h5 class="mb-0">Debugging Information</h5>
+      </div>
+      <div class="card-body">
+        <p>If you're seeing this error, it might be due to one of the following reasons:</p>
+        <ul>
+          <li>Your client credentials (client ID or secret) are incorrect</li>
+          <li>The redirect URI is not registered in your Amazon Cognito app client settings</li>
+          <li>The requested scopes are not enabled in your Cognito app client</li>
+          <li>Your session has expired or was lost</li>
+        </ul>
+        <p>Check the browser console and server logs for more detailed error information.</p>
+      </div>
+    </div>
+  </div>
+</div> 

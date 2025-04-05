@@ -25,14 +25,35 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
+                    {{#if isAuthenticated}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/auth/profile">Profile</a>
+                    </li>
+                    {{/if}}
                 </ul>
 
-                <form class="d-flex" method="POST" action="/" novalidate>
+                <form class="d-flex me-2" method="POST" action="/" novalidate>
                     <input class="form-control me-2" type="search" placeholder="Search" name="search"
                         aria-label="Search">
                     <button class="btn btn-outline-light" type="submit">Search</button>
                 </form>
 
+                <div class="d-flex">
+                    {{#if isAuthenticated}}
+                    <div class="dropdown">
+                        <button class="btn btn-outline-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{user.displayName}}
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="/auth/profile">Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/auth/logout">Logout</a></li>
+                        </ul>
+                    </div>
+                    {{else}}
+                    <a href="/auth/login" class="btn btn-outline-light">Login</a>
+                    {{/if}}
+                </div>
             </div>
         </div>
     </nav>
